@@ -1,21 +1,16 @@
-{{! views/auth/login.hbs }}
+<div id="form">
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+    <label for="input-email">UserName</label>
+    <input id="input-email" name="username" placeholder="Your Username" value="{{Username}}"/>
  
-<form action="/login" method="POST">
- <div>
- <label for="username">Username:</label>
- <input type="text" name="username">
- </div>
+    <label for="input-password">Password</label>
+    <input type="password" name="passwordHash" id="input-password" placeholder="********" />
  
- <div>
- <label for="password">Password:</label>
- <input type="password" name="password">
- </div>
+    <button type="submit">Login</button>
  
- {{#if errorMessage}}
- <div class="error-message">{{errorMessage}}</div>
- {{/if}}
- 
- <div>
- <button>Log in</button>
- </div>
-</form>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
