@@ -10,21 +10,39 @@ mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
 const tickets = [
   {
     date: 1 / 12 / 2020,
-    origin: "Amsterdam",
-    destination: "Kalamazoo",
+    origin: "Amsterdam AMS",
+    destination: "Kalamazoo AZO",
     quantity: 2,
   },
   {
     date: 17 / 12 / 2020,
-    origin: "Atlanta",
-    destination: "Beijing",
-    quantity: 4,
+    origin: "Atlanta ATL",
+    destination: "Beijing PEK",
+    quantity: 1,
   },
   {
     date: 19 / 12 / 2020,
-    origin: "Dubai",
-    destination: "Madrid",
+    origin: "Dubai DXB",
+    destination: "Madrid MAD",
+    quantity: 2,
+  },
+  {
+    date: 02 / 01 / 2021,
+    origin: "London LHR",
+    destination: "Shanghai PVG",
+    quantity: 4,
+  },
+  {
+    date: 17 / 01 / 2021,
+    origin: "Chicago ORD",
+    destination: "Los Angeles LAX",
     quantity: 1,
+  },
+  {
+    date: 22 / 01 / 2021,
+    origin: "Queens JFK",
+    destination: "Amsterdam AMS",
+    quantity: 2,
   }
 ]
 
