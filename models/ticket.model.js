@@ -6,6 +6,7 @@ const ticketSchema = new Schema(
       origin: String,
       destination: String,
       quantity: Number,
+      // date: date,
     },
   );
 
