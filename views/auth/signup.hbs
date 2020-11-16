@@ -1,0 +1,39 @@
+<h2>Signup</h2>
+ 
+<form action="/signup" method="POST" id="form-container">
+ <div>
+  <label for="username">Username</label>
+  <input id="username" type="text" name="username">
+ </div>
+ 
+ <div>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password">
+ </div>
+  <br>
+
+ <label for="roles">Roles</label>
+
+<select name="role" id="roleForUser">
+  <option name="GUEST" value="GUEST">GUEST</option>
+  <option name="EDITOR" value="EDITOR">EDITOR</option>
+  <option name="ADMIN" value="ADMIN">ADMIN</option>
+</select>
+ <br>
+ <br>
+
+ {{#if errorMessage}}
+  <div class="error-message">{{errorMessage}}</div>
+ {{/if}}
+ 
+ <div>
+  <button>Create account</button>
+ </div>
+ 
+ <p class="account-message">
+  Do you already have an account?
+  <a href="/login">Login</a>
+ </p>
+ 
+
+</form>
