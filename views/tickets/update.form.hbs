@@ -1,0 +1,19 @@
+<h2>Edit My Ticket(s) {{name}}:</h2>
+
+<form action="/tickets/{{_id}}/update-form" method="post">
+
+  <label for="date-input">Travel Date:</label>
+  <input type="date" name="date" id="date-input" value="{{date}}" />
+
+  <label for="name-input">Select Origin:</label>
+  <input type="text" name="origin" id="origin-input" value="{{origin}}" />
+
+  <label for="destination-input">Select Destination:</label>
+  <input type="text" name="destination" id="destination-input" value="{{destination}}" />
+
+  <label for="quantity-input">Select Quantity:</label>
+  <input type="number" name="quantity" id="quantity-input" value="{{quantity}}" />
+
+  <button type="submit">Update Ticket(s)</button>
+
+</form> 

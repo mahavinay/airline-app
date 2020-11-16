@@ -2,13 +2,16 @@
 
 <form action="/tickets/create" method="post">
 
-  <label for="origin-input">Origin:</label>
+  <label for="date-input">Travel Date:</label>
+  <input type="date" name="date" id="date-input" />
+
+  <label for="origin-input">Select Origin:</label>
   <input type="text" name="origin" id="origin-input" />
 
-  <label for="destination-input">Destination:</label>
+  <label for="destination-input">Select Destination:</label>
   <input type="text" name="destination" id="destination-input" />
 
-  <label for="quantity-input">Quantity:</label>
+  <label for="quantity-input">Select Quantity:</label>
   <input type="number" name="quantity" id="quantity-input"> </input>
 
   <button type="submit">Book Ticket</button>
