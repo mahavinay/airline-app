@@ -1,6 +1,6 @@
 <h2>New Ticket:</h2>
 
-<form action="/tickets/create" method="post">
+<form action="/ticket" method="post">
 
   <label for="date-input">Travel Date:</label>
   <input type="date" name="date" id="date-input" />
@@ -13,7 +13,9 @@
 
   <label for="quantity-input">Select Quantity:</label>
   <input type="number" name="quantity" id="quantity-input"> </input>
-
+  
+  <form action="/private" method="post">
   <button type="submit">Book Ticket</button>
+  </form>
 
 </form> 

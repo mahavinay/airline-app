@@ -17,13 +17,13 @@ const userSchema = new Schema(
       required: [true, 'Password is required.'],
       },
 
-    Tickets:{
-        author: { type: Schema.Types.ObjectId, ref: "Ticket" },
-      }
-  },
+     
+    },
+
   {
     timestamps: true
   }
+
 );
 
 module.exports = model('User', userSchema);

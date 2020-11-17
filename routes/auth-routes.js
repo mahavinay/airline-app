@@ -6,9 +6,11 @@ const passport = require('passport');
 
 // User model
 const User = require('../models/User.model');
+const Ticket = require('../models/ticket.model');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require('bcrypt');
+const ticketModel = require('../models/ticket.model');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
@@ -55,13 +57,67 @@ router.get('/login', (req, res, next) => {
 
 router.post(
   "/login",
-  passport.authenticate("local", {
+    passport.authenticate("local", {
      successRedirect: "/private", 
     failureRedirect: "/login",
     failureFlash:true,
-  })
-
+    })
   );
+
+  
+router.get('/private', (req, res) => {
+  res.render('private', { user: req.user });
+});
+
+router.get('/ticket', (req, res, next) => {
+   User.findById()
+  .then((dbUsers) => {
+  res.render("tickets/create-form", { dbUsers });
+})
+.catch((err) =>
+  console.error(`Err while displaying tickets : ${err}`)
+);
+});
+
+router.post('/ticket', (req, res, next) => {
+const { origin, destination, quantity, date } = req.body;
+Ticket.create({ origin, destination, quantity, date, user:req.session.passport.username } )
+.then((dbUsers) => {
+  res.render("private", { dbUsers });
+})
+.catch((err) =>
+console.error(`Err while creating and updating ticket in the DB: ${err}`)
+);
+});
+
+router.get('/myTickets', (req, res) => {
+   Ticket.find({user: req.session.passport.user})
+  .then((dbUsers) => {
+    console.log(dbUsers);
+    res.render("tickets/myTickets", { tUser: dbUsers});
+  })
+  .catch((err) =>
+    console.error(`Err while displaying tickets in my tickets: ${err}`)
+  ); 
+});
+
+
+
+/* router.get("/private", (req, res) => {
+  const { userId } = req.params;
+  console.log(userId);
+  User.findById(userId)
+    .populate("tickets")
+    .then((userFromDB) => console.log(userFromDB))
+    .catch((err) => `Error while getting user from the DB: ${err}`);
+}); */
+
+
+router.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
+
 
 /* router.post(
   '/login',
@@ -85,10 +141,6 @@ router.post(
 const checkEditor = checkRoles();
 const checkAdmin = checkRoles(); */
 
-router.get('/private', (req, res) => {
-  res.render('private', { user: req.user });
-});
-
 
 /* function checkRoles() {
   return function (req, res, next) {
@@ -102,7 +154,7 @@ router.get('/private', (req, res) => {
   };
 } */
 
-function ensureAuthenticated(req, res, next) {
+/* function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     // The user is authenticated
     // and we have access to the logged user in req.user
@@ -111,10 +163,6 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login');
   }
 }
-
-router.post("/logout", (req, res) => {
-  req.session.destroy();
-  res.redirect("/");
-});
+ */
 
 module.exports = router;
