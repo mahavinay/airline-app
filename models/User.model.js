@@ -16,6 +16,9 @@ const userSchema = new Schema(
       trim: true,
       required: [true, 'Password is required.'],
       },
+      tickets:{
+        author: { type: Schema.Types.ObjectId, ref: "Ticket" },
+      }
   },
   
   {

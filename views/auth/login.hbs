@@ -1,14 +1,22 @@
 <div id="form">
   <h2>Login</h2>
   <form action="/login" method="POST">
+  <div class="loginpage">
+    <div>
     <label for="input-email">UserName</label>
     <input id="input-email" name="username" placeholder="Your Username" value="{{username}}"/>
- 
+    </div>
+    
+    <div>
     <label for="input-password">Password</label>
     <input type="password" name="passwordHash" id="input-password" placeholder="********" />
- 
-    <button type="submit">Login</button>
- 
+    </div>
+    
+    <div>
+    <button class="btn-all" type="submit"><b>Login</b></button>
+    </div>
+
+    </div>
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
