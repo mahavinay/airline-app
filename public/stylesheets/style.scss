@@ -3,6 +3,71 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.btn-all{
+padding: 10px;
+border-radius: 10px;
+  &:hover {
+  background-color:green;
+  opacity: 1;
+  }
+}
+
 a {
   color: #00B7FF;
 }
+
+title{
+color: lightseagreen;
+} 
+
+body{
+    margin: 100px auto;
+    width: 500px;
+    align-items: center;   
+    background-color: peachpuff;
+   .airline-title{
+     display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    border: 2px solid black;
+    }
+
+    .sup-container{
+      margin-top:50px;
+    }
+  
+    .sup{
+    display: flex;
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    a{
+      margin-left: 50px;
+      &:hover {
+        color: #000;
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+  .loginpage{
+    display: flex;
+     justify-content: space-around;
+     align-items: center;
+  }
+
+  .private-view{
+    margin-top: 20px;
+    border: 2px solid black;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: flex-end;
+    
+  }
+}
+
+

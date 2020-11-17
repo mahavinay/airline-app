@@ -1,9 +1,22 @@
-<h2>Welcome {{user.username}}!</h2>
-<a href="/">home</a>
- <form id="logout-form" action="/logout" method="POST">
-          <button>Logout</button>
-  </form>
-<div class="btn-toMyTickets">
-  <a href="/views.my-tickets">My Tickets</a>      
-</div>
+<div class="private-view">
+        <div>
+                <h2>Welcome {{user.username}}!</h2>
+        </div>
+        <div>
+                <a href="/">home</a>
+        </div>
+        <div>
+               <a href="/ticket">Book Ticket</a> 
+        </div>
+          <div>
+               <a href="/myTickets">My Tickets</a> 
+        </div>
 
+        <div>
+                <form id="logout-form" action="/logout" method="POST">
+                <button class="btn-all"><b>Logout</b></button>
+                </form>
+        </div>
+        
+
+</div>
