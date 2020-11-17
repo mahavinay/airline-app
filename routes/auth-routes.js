@@ -14,9 +14,9 @@ const bcryptSalt = 10;
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
 
 router.post('/signup', (req, res, next) => {
-  const { username, password} = req.body;
+  const { username, passwordHash} = req.body;
   
-    if (!username || !password ) {
+    if (!username || !passwordHash ) {
     res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username and password.' });
     return;
   }
@@ -31,7 +31,7 @@ router.post('/signup', (req, res, next) => {
 
       // Encrypt the password
       const salt = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(password, salt);
+      const hashPass = bcrypt.hashSync(passwordHash, salt);
             //
       // Save the user in DB
       //
@@ -40,10 +40,10 @@ router.post('/signup', (req, res, next) => {
         username,
         passwordHash: hashPass,
       });
-
+      console.log(newUser);
       newUser
         .save()
-        .then(() => res.render("/index"))
+        .then(() => res.render("signup-message", newUser))
         .catch(err => next(err));
     })
     .catch(err => next(err));
@@ -56,10 +56,11 @@ router.get('/login', (req, res, next) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-     successRedirect: "/index",
+     successRedirect: "/private", 
     failureRedirect: "/login",
-    failureFlash:true
+    failureFlash:true,
   })
+
   );
 
 /* router.post(
