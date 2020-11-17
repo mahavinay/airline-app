@@ -1,7 +1,5 @@
 const express = require('express');
 const ticketModel = require('../models/ticket.model');
-// console.log(ticketModel)
-// require the ticket model here
 
 const router = express.Router();
 
@@ -41,7 +39,7 @@ router.post('/ticket/:id/update-form', (req, res) => {
 
   ticketModel.findByIdAndUpdate(
     id,
-    { name, propellers, maxSpeed },
+    { date, origin, destination, quantity },
     { new: true }
   )
   .then(() => res.redirect('/ticket/list'))
