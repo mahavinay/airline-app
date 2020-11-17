@@ -9,5 +9,4 @@ const ticketSchema = new Schema(
       date: Date,
     },
   );
-
   module.exports = model("Ticket", ticketSchema);
