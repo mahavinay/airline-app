@@ -4,18 +4,26 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    username: String,
-    passwordHash: String,
-    role: {
+    username : {
       type: String,
-      enum: ['GUEST', 'EDITOR', 'ADMIN'],
-      default: 'GUEST',
+      trim: true,
+      required: [true, 'Username is required.'],
+      unique: true
+
     },
-  },
-  
+    passwordHash : {
+      type: String,
+      trim: true,
+      required: [true, 'Password is required.'],
+      },
+
+     
+    },
+
   {
     timestamps: true
   }
+
 );
 
 module.exports = model('User', userSchema);

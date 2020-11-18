@@ -10,15 +10,14 @@ const logger       = require('morgan');
 const path         = require('path');
 const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
-const flash        = require('connect-flash');
 const bcrypt       = require('bcrypt');
 const passport     = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const flash         = require('connect-flash');
 const User          = require('./models/User.model');
 
+require("./configs/db.config");
 
-
-//Passport strategy
 passport.serializeUser((user, cb) => cb(null, user._id));
  
 passport.deserializeUser((id, cb) => {
@@ -29,20 +28,19 @@ passport.deserializeUser((id, cb) => {
  
 passport.use(
   new LocalStrategy(
-
     {
-      username: 'username', 
-      passwordHash: 'password' 
+      usernameField: 'username', 
+      passwordField: 'passwordHash' 
     },
-    (username, password, done) => {
-      User.findOne({ username })
+    (username, passwordHash, done) => {
+       User.findOne({ username })
         .then(user => {
           if (!user) {
-            return done(null, false, { message: 'Incorrect username' });
+            return done(null, false, { message: "Incorrect username" } );
           }
  
-          if (!bcrypt.compareSync(password, user.passwordHash)) {
-            return done(null, false, { message: 'Incorrect password' });
+          if (!bcrypt.compareSync(passwordHash, user.passwordHash)) {
+            return done(null, false, { message: "Incorrect password" });
           }
  
           done(null, user);
@@ -69,25 +67,10 @@ app.use(
   })
 );
 
-/* app.configure(function() {
-  app.use(express.cookieParser('keyboard cat'));
-  app.use(express.session({ cookie: { maxAge: 60000 }}));
-  //app.use(flash());
-}); */
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 
-mongoose
-  .connect('mongodb://localhost/localpassport', {useNewUrlParser: true, useUnifiedTopology: true,
-  useCreateIndex: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -101,8 +84,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-//manage flash messages.
 app.use(flash());
 
 // Express View engine setup
@@ -122,7 +103,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Welcome to Iron Airlines';
 
 
 
