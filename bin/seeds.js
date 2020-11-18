@@ -1,11 +1,8 @@
-const mongoose = require("mongoose");
+// this line will have to be added to future seed scripts if you want to support reading the connection string from .env
+require('dotenv').config();
+require("../configs/db.config");
 const Ticket = require("../models/ticket.model");
-
-mongoose.connect(`mongodb://localhost/${DB_NAME}`, {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+const mongoose = require("mongoose");
 
 const tickets = [
   {
@@ -46,11 +43,11 @@ const tickets = [
   }
 ]
 
-Ticket.create(ticket)
+Ticket.create(tickets)
   .then((ticketFromDB) => {
     console.log(`Created ${ticketFromDB.length} ticket`);
     mongoose.connection.close();
   })
   .catch((err) =>
-    console.log(`An error occurred while getting creating ticket: ${err}`)
+    console.log(`An error occurred while creating ticket: ${err}`)
   ); 
