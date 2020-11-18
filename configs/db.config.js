@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-
 const DB_NAME = "IronAirlines"
+const MONGO_URI= `mongodb://localhost/${DB_NAME}`
+
 
 mongoose
-  .connect(`mongodb://localhost/${DB_NAME}`, {
+  .connect(process.env.MONGO_CONNECTION_STRING || MONGO_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
