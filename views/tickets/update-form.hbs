@@ -3,8 +3,8 @@
   <label for="date-input">Travel Date:</label>
   <input type="date" name="date" id="date-input" value="{{date}}" />
   <br>
-  <label for="origin-input">Select Origin:</label>
-  <select name="origin" id="origin">
+  <label for="origin-input"><b>Select Origin:</b></label>
+  <select name="origin" id="origin" value="{{origin}}">
     <option value="The Netherlands">The Netherlands</option>
     <option value="United States">United States</option>
     <option value="United Arab Emirates">United Arab Emirates</option>
@@ -13,8 +13,8 @@
     <option value="England">England</option>
   </select>
   <br>
-  <label for="destination-input">Select Destination:</label>
-  <select name="destination" id="destination">
+  <label for="destination-input"></b>Select Destination:</b></label>
+  <select name="destination" id="destination" value="{{destination}}">
     <option value="The Netherlands">The Netherlands</option>
     <option value="United States">United States</option>
     <option value="United Arab Emirates">United Arab Emirates</option>
@@ -23,14 +23,14 @@
     <option value="England">England</option>
   </select>
   <br>
-  <label for="quantity-input">Select Quantity:</label>
-  <select name="number" id="quantity-input">
+  <label for="quantity-input">No of Tickets:</label>
+  <select name="quantity" id="quantity-input" value="{{quantity}}">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
   </select>
   <br>
-  <button type="submit">Update Ticket(s)</button>
+  <button class="btn-all" type="submit">Update Ticket</button>
 
 </form>

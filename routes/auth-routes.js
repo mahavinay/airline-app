@@ -7,7 +7,6 @@ const User = require('../models/User.model');
 const Ticket = require('../models/ticket.model');
 
 const bcrypt = require('bcrypt');
-const ticketModel = require('../models/ticket.model');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
@@ -35,7 +34,7 @@ router.post('/signup', (req, res, next) => {
         username,
         passwordHash: hashPass,
       });
-      console.log(newUser);
+      
       newUser
         .save()
         .then(() => res.render("signup-message", newUser))
@@ -72,32 +71,26 @@ router.get('/tickets', (req, res, next) => {
 );
 });
 
+/*  router.get("/myTickets/:id/update-form", (req, res) => {
+  const { id } = req.params;
+     Ticket.findById(id)
+    .then((ticketFromDB) => res.render("tickets/update-form", {ticketFromDB} ))
+    .catch((error) => console.log(`Error while updating a ticket: ${error}`));
+})  */
+
+
+
 router.get("/myTickets/:id/update-form", (req, res) => {
   const { id } = req.params;
-  console.log(req.session.passport.user);
-    Ticket.findById(id)
-    .then((ticketFromDB) => res.render("tickets/update-form", {ticketFromDB} ))
+     Ticket.findById(id)
+     .then((ticketFromDB) => res.render("tickets/update-form", {ticketFromDB} ))
     .catch((error) => console.log(`Error while updating a ticket: ${error}`));
 })
 
-router.post('/tickets', (req, res, next) => {
-const { origin, destination, quantity, date } = req.body;
-Ticket.create({ origin, destination, quantity, date, user:req.session.passport.user} )
-.then((dbUsers) => {
-  res.render("private", { dbUsers });
-})
-.catch((err) =>
-console.error(`Err while creating and updating ticket in the DB: ${err}`)
-);
-});
-
-
 
 router.get('/myTickets', (req, res) => {
-
    Ticket.find({user: req.session.passport.user})
   .then((ticketUsers) => {
-    console.log(ticketUsers);
    res.render("tickets/myTickets", { tUser: ticketUsers});
   })
   .catch((err) =>
@@ -105,24 +98,7 @@ router.get('/myTickets', (req, res) => {
   ); 
 });
 
-router.get('/tickets/:id/update-form', (req, res) => {
-  const { id } = req.params
-console.log(id)
-  ticketModel.findById(id)
-  .then((ticketToEdit) => {
-    console.log(ticketToEdit)
-    res.render("tickets/update-form", ticketToEdit)
-  })
-  .catch((error) =>
-    console.log(`Error while making edits to ticket: ${error}`))
-});
 
-router.post('/tickets/:id/update-form', (req, res) => {
-  const { id } = req.params;
-  Ticket.findByIdAndUpdate(id)
-    .then(() => res.redirect("/myTickets"))
-    .catch((error) => console.log('Error while editing ticket: ${error}'));
-});
 
 router.post("/myTickets/:id/delete", (req, res) => {
   const { id } = req.params;
