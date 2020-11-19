@@ -105,8 +105,24 @@ router.get('/myTickets', (req, res) => {
   ); 
 });
 
+router.get('/tickets/:id/update-form', (req, res) => {
+  const { id } = req.params
+console.log(id)
+  ticketModel.findById(id)
+  .then((ticketToEdit) => {
+    console.log(ticketToEdit)
+    res.render("tickets/update-form", ticketToEdit)
+  })
+  .catch((error) =>
+    console.log(`Error while making edits to ticket: ${error}`))
+});
 
-
+router.post('/tickets/:id/update-form', (req, res) => {
+  const { id } = req.params;
+  Ticket.findByIdAndUpdate(id)
+    .then(() => res.redirect("/myTickets"))
+    .catch((error) => console.log('Error while editing ticket: ${error}'));
+});
 
 router.post("/myTickets/:id/delete", (req, res) => {
   const { id } = req.params;
