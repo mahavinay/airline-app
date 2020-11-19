@@ -1,30 +1,68 @@
 <h2>Edit My Ticket</h2>
 <form action="/myTickets/{{_id}}/update-form" method="post">
+<label for="date-input">Travel Date:</label>
+  <input type="date" name="date" id="date-input" value="{{date}}"/>
+  <br>
+   <label for="origin-input">Select Origin:</label>
+  <select name="origin" id="origin">
+  <option value="{{origin}}">{{origin}}</option>
+  <option value="The Netherlands">The Netherlands</option>
+  <option value="United States">United States</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="Spain">Spain</option>
+  <option value="China">China</option>
+  <option value="England">England</option>
+</select>
+  <br>
+  <label for="destination-input">Select Destination:</label>
+  <select name="destination" id="destination">
+  <option value="{{destination}}">{{destination}}</option>
+  <option value="The Netherlands">The Netherlands</option>
+  <option value="United States">United States</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="Spain">Spain</option>
+  <option value="China">China</option>
+  <option value="England">England</option>
+</select>
+  <br>
+  <label for="quantity-input">Number of Tickets</label>
+  <select name="quantity" id="quantity-input">
+    <option value={{quantity}}>{{quantity}}</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <br>
+  <button class="btn-all" type="submit">Update Ticket</button>
+</form>
+
+{{!-- <form action="/myTickets/{{newTicket._id}}/update-form" method="post">
   <label for="date-input">Travel Date:</label>
-  <input type="date" name="date" id="date-input" value="{{date}}" />
+  <input type="date" name="date" id="date-input" value="{{newTicket.date}}" />
   <br>
-  <label for="origin-input"><b>Select Origin:</b></label>
-  <select name="origin" id="origin" value="{{origin}}">
-    <option value="The Netherlands">The Netherlands</option>
-    <option value="United States">United States</option>
-    <option value="United Arab Emirates">United Arab Emirates</option>
-    <option value="Spain">Spain</option>
-    <option value="China">China</option>
-    <option value="England">England</option>
+  <label for="origin-input">Select Origin:</label>
+  <select name="origin" id="origin" >
+    {{#each newCountriesArray}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    {{#if newTicket.chosenCountry}}
+    <option value="{{newTicket.origin}}" selected>{{newTicket.origin}}</option>
+    {{/if}}
   </select>
   <br>
-  <label for="destination-input"></b>Select Destination:</b></label>
-  <select name="destination" id="destination" value="{{destination}}">
-    <option value="The Netherlands">The Netherlands</option>
-    <option value="United States">United States</option>
-    <option value="United Arab Emirates">United Arab Emirates</option>
-    <option value="Spain">Spain</option>
-    <option value="China">China</option>
-    <option value="England">England</option>
+  <label for="destination-input">Select Destination:</label>
+  <select name="destination" id="destination">
+   {{#each newCountriesArrayTwo}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    {{#if newTicket.chosenCountry}}
+    <option value="{{newTicket.destination}}" selected>{{newTicket.destination}}</option>
+    {{/if}}
   </select>
   <br>
-  <label for="quantity-input">No of Tickets:</label>
-  <select name="quantity" id="quantity-input" value="{{quantity}}">
+  <label for="quantity-input">Select Quantity:</label>
+  <select name="quantity" id="quantity-input">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -33,4 +71,4 @@
   <br>
   <button class="btn-all" type="submit">Update Ticket</button>
 
-</form>
+</form> --}}
