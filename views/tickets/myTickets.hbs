@@ -4,16 +4,25 @@
 <div><b>Destination:</b> {{destination}}</div>
 <div><b>Number of Tickets:</b> {{quantity}}</div>
 <div><b>Date:</b>{{date}}</div>
+
 <div class="loginpage">
   <div>
     <a class="btn-all" href="/tickets/{{_id}}/update-form">Edit</a>
   </div>
   <div>
     <form action="/myTickets/{{_id}}/delete" method="POST">
-    <button class="btn-all">Delete</button>
+    {{!-- <button class="btn-all">Delete</button> --}}
+    <div class="icon-floatright">
+    <button><i class="fa fa-trash-o"></i></button>
+    </div>
     </form>
   </div>
 </div>
+</div>
 <hr>
 {{/each}}
+<<<<<<< HEAD
 <h3>Go Back to previous page</h3>
+=======
+<a href="/private"><b>Back</b></a> 
+>>>>>>> 321cc5cc2d01d808d87ab691c7a876a54956a7a8

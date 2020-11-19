@@ -72,6 +72,14 @@ router.get('/tickets', (req, res, next) => {
 );
 });
 
+router.get("/myTickets/:id/update-form", (req, res) => {
+  const { id } = req.params;
+  console.log(req.session.passport.user);
+    Ticket.findById(id)
+    .then((ticketFromDB) => res.render("tickets/update-form", {ticketFromDB} ))
+    .catch((error) => console.log(`Error while updating a ticket: ${error}`));
+})
+
 router.post('/tickets', (req, res, next) => {
 const { origin, destination, quantity, date } = req.body;
 Ticket.create({ origin, destination, quantity, date, user:req.session.passport.user} )
@@ -83,9 +91,13 @@ console.error(`Err while creating and updating ticket in the DB: ${err}`)
 );
 });
 
+
+
 router.get('/myTickets', (req, res) => {
+
    Ticket.find({user: req.session.passport.user})
   .then((ticketUsers) => {
+    console.log(ticketUsers);
    res.render("tickets/myTickets", { tUser: ticketUsers});
   })
   .catch((err) =>

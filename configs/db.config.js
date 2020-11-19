@@ -1,6 +1,8 @@
 // this line will have to be added to future seed scripts if you want to support reading the connection string from .env
 require('dotenv').config();
 const mongoose = require("mongoose");
+DB_NAME="IronAirlines"
+MONGO_URI=`mongodb://localhost/${DB_NAME}`
 
 mongoose
 // .connect(MONGO_URI, {
