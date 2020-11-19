@@ -1,21 +1,40 @@
 <h2>New Ticket:</h2>
 
-<form action="/ticket" method="post">
+<form action="/tickets" method="post">
 
   <label for="date-input">Travel Date:</label>
   <input type="date" name="date" id="date-input" />
-
-  <label for="origin-input">Select Origin:</label>
-  <input type="text" name="origin" id="origin-input" />
-
+  <br>
+   <label for="origin-input">Select Origin:</label>
+  <select name="origin" id="origin">
+  <option value="The Netherlands">The Netherlands</option>
+  <option value="United States">United States</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="Spain">Spain</option>
+  <option value="China">China</option>
+  <option value="England">England</option>
+</select>
+  <br>
   <label for="destination-input">Select Destination:</label>
-  <input type="text" name="destination" id="destination-input" />
-
+  <select name="destination" id="destination">
+  <option value="The Netherlands">The Netherlands</option>
+  <option value="United States">United States</option>
+  <option value="United Arab Emirates">United Arab Emirates</option>
+  <option value="Spain">Spain</option>
+  <option value="China">China</option>
+  <option value="England">England</option>
+</select>
+  <br>
   <label for="quantity-input">Select Quantity:</label>
-  <input type="number" name="quantity" id="quantity-input"> </input>
-  
+  <select name="number" id="quantity-input">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <br>
   <form action="/private" method="post">
-  <button type="submit">Book Ticket</button>
+    <button type="submit">Book Ticket</button>
   </form>
 
-</form> 
+</form>
