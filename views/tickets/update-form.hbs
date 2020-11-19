@@ -1,5 +1,7 @@
+<div class=form>
 <h2>Edit My Ticket</h2>
 <form action="/myTickets/{{newTicket._id}}/update-form" method="post">
+  
   <label for="date-input">Travel Date:</label>
   <input type="date" name="date" id="date-input" value="{{newTicket.date}}" />
   <br>
@@ -32,5 +34,5 @@
   </select>
   <br>
   <button type="submit">Update Ticket(s)</button>
-
 </form>
+</div>
