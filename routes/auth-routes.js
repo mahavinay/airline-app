@@ -94,8 +94,10 @@ console.error(`Err while creating and updating ticket in the DB: ${err}`)
 
 
 router.get('/myTickets', (req, res) => {
+
    Ticket.find({user: req.session.passport.user})
   .then((ticketUsers) => {
+    console.log(ticketUsers);
    res.render("tickets/myTickets", { tUser: ticketUsers});
   })
   .catch((err) =>
