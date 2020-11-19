@@ -38,6 +38,8 @@ body {
         color: #000;
         opacity: 1;
         text-decoration: underline; }
+    body .sup .icon-floatright {
+      float: right; }
   body .loginpage {
     display: flex;
     justify-content: space-around;

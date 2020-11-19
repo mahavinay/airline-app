@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const ticketModel = require('../models/ticket.model');
 
 const router = express.Router();
@@ -55,4 +55,4 @@ router.post('/tickets/delete', (req, res, next) => {
     console.log(`An error occurred while making changes to your ticket : ${err}`))
 });
 
-module.exports = router;
+module.exports = router; */

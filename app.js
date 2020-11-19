@@ -113,7 +113,7 @@ app.use('/', index);
 const authRouter = require('./routes/auth-routes');
 app.use('/', authRouter);
 
-const ticketRouter = require('./routes/ticket-routes');
-app.use('/', ticketRouter);
+/* const ticketRouter = require('./routes/ticket-routes');
+app.use('/', ticketRouter); */
  
 module.exports = app;

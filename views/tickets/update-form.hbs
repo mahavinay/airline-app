@@ -1,7 +1,5 @@
-<h2>Edit My Ticket(s) {{name}}:</h2>
-
-<form action="/tickets/{{_id}}/update-form" method="post">
-
+<h2>Edit My Ticket</h2>
+<form action="/myTickets/{{_id}}/update-form" method="post">
   <label for="date-input">Travel Date:</label>
   <input type="date" name="date" id="date-input" value="{{date}}" />
   <br>
