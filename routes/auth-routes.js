@@ -1,14 +1,11 @@
-// routes/auth.routes.js
 
 const { Router } = require('express');
 const router = new Router();
 const passport = require('passport');
 
-// User model
 const User = require('../models/User.model');
 const Ticket = require('../models/ticket.model');
 
-// Bcrypt to encrypt passwords
 const bcrypt = require('bcrypt');
 const ticketModel = require('../models/ticket.model');
 const bcryptSalt = 10;
@@ -31,13 +28,9 @@ router.post('/signup', (req, res, next) => {
         return;
       }
 
-      // Encrypt the password
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(passwordHash, salt);
-            //
-      // Save the user in DB
-      //
-
+    
       const newUser = new User({
         username,
         passwordHash: hashPass,
@@ -81,7 +74,7 @@ router.get('/ticket', (req, res, next) => {
 
 router.post('/ticket', (req, res, next) => {
 const { origin, destination, quantity, date } = req.body;
-Ticket.create({ origin, destination, quantity, date, user:req.session.passport.username } )
+Ticket.create({ origin, destination, quantity, date, user:req.session.passport.user} )
 .then((dbUsers) => {
   res.render("private", { dbUsers });
 })
@@ -92,77 +85,24 @@ console.error(`Err while creating and updating ticket in the DB: ${err}`)
 
 router.get('/myTickets', (req, res) => {
    Ticket.find({user: req.session.passport.user})
-  .then((dbUsers) => {
-    console.log(dbUsers);
-    res.render("tickets/myTickets", { tUser: dbUsers});
+  .then((ticketUsers) => {
+   res.render("tickets/myTickets", { tUser: ticketUsers});
   })
   .catch((err) =>
-    console.error(`Err while displaying tickets in my tickets: ${err}`)
+    console.error(`Err while displaying tickets in My tickets Page: ${err}`)
   ); 
 });
 
-
-
-/* router.get("/private", (req, res) => {
-  const { userId } = req.params;
-  console.log(userId);
-  User.findById(userId)
-    .populate("tickets")
-    .then((userFromDB) => console.log(userFromDB))
-    .catch((err) => `Error while getting user from the DB: ${err}`);
-}); */
-
+router.post("/myTickets/:id/delete", (req, res) => {
+  const { id } = req.params;
+  Ticket.findByIdAndDelete(id)
+    .then(() => res.redirect("/myTickets"))
+    .catch((error) => console.log(`Error while deleting a book: ${error}`));
+});
 
 router.post("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-
-
-/* router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureRedirect: '/login',
-    failureFlash: true
-  }), (req, res) => {
-    if (req.user.role === "GUEST") {
-      res.render("auth/main");
-    }
-    if (req.user.role === "ADMIN") {
-      res.redirect('/private');
-    }
-    if (req.user.role === "EDITOR") {
-      console.log("Maha");
-      res.redirect('/private');
-    }
-  }); */
-
-/* const checkGuest = checkRoles();
-const checkEditor = checkRoles();
-const checkAdmin = checkRoles(); */
-
-
-/* function checkRoles() {
-  return function (req, res, next) {
-    console.log("REQ>ROLE",req.user.role);
-   
-    if (req.isAuthenticated() && (req.user.role === "ADMIN" || req.user.role === "EDITOR" )) {
-      return next();
-    } else {
-      res.redirect('/login');
-    }
-  };
-} */
-
-/* function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    // The user is authenticated
-    // and we have access to the logged user in req.user
-    return next();
-  } else {
-    res.redirect('/login');
-  }
-}
- */
 
 module.exports = router;
