@@ -7,7 +7,6 @@ const User = require('../models/User.model');
 const Ticket = require('../models/ticket.model');
 
 const bcrypt = require('bcrypt');
-const ticketModel = require('../models/ticket.model');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
