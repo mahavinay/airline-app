@@ -110,7 +110,10 @@ app.locals.title = 'Welcome to Iron Airlines';
 const index = require('./routes/index');
 app.use('/', index);
 
-const router = require('./routes/auth-routes');
-app.use('/', router);
+const authRouter = require('./routes/auth-routes');
+app.use('/', authRouter);
+
+const ticketRouter = require('./routes/ticket-routes');
+app.use('/', ticketRouter);
  
 module.exports = app;

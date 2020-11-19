@@ -69,7 +69,7 @@ router.get('/private', (req, res) => {
   res.render('private', { user: req.user });
 });
 
-router.get('/ticket', (req, res, next) => {
+router.get('/tickets', (req, res, next) => {
    User.findById()
   .then((dbUsers) => {
   res.render("tickets/create-form", { dbUsers });
@@ -79,9 +79,9 @@ router.get('/ticket', (req, res, next) => {
 );
 });
 
-router.post('/ticket', (req, res, next) => {
+router.post('/tickets', (req, res, next) => {
 const { origin, destination, quantity, date } = req.body;
-Ticket.create({ origin, destination, quantity, date, user:req.session.passport.username } )
+Ticket.create({ origin, destination, quantity, date, user:req.session.passport.user } )
 .then((dbUsers) => {
   res.render("private", { dbUsers });
 })
