@@ -7,6 +7,7 @@ const User = require('../models/User.model');
 const Ticket = require('../models/ticket.model');
 
 const bcrypt = require('bcrypt');
+const ticketModel = require('../models/ticket.model');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => res.render('auth/signup'));
@@ -110,7 +111,27 @@ console.log(id)
   ticketModel.findById(id)
   .then((ticketToEdit) => {
     console.log(ticketToEdit)
-    res.render("tickets/update-form", ticketToEdit)
+    const countriesArray = ["Spain", "England", "United States", "The Netherlands", "China", "United Arab Emirates"]
+
+    const isOriginIncluded = countriesArray.includes(ticketToEdit.origin)
+    const isDestinationIncluded = countriesArray.includes(ticketToEdit.destination)
+
+    if (isOriginIncluded && isDestinationIncluded) {
+      const newCountriesArray = countriesArray.filter((element) => element !== ticketToEdit.origin)
+      const newCountriesArrayTwo = countriesArray.filter(element => element !== ticketToEdit.destination)
+
+      console.log("New Countries", newCountriesArray)
+      console.log("New Countries Two", newCountriesArrayTwo)
+
+      const {_id, origin, destination, quantity, date} = ticketToEdit
+
+      const newTicket = {_id, origin, destination, quantity, date, chosenCountry: true}
+      console.log("NEW", newTicket)
+      res.render("tickets/update-form", {newTicket: newTicket, newCountriesArray, newCountriesArrayTwo})
+      
+    } else {
+      res.render("tickets/update-form", ticketToEdit)
+    }
   })
   .catch((error) =>
     console.log(`Error while making edits to ticket: ${error}`))
