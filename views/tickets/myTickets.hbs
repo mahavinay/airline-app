@@ -6,9 +6,7 @@
 <div><b>Date:</b>{{date}}</div>
 <div class="loginpage">
   <div>
-    <form action="/myTickets/{{_id}}/edit" method="POST">
-      <button class="btn-all">Edit</button>
-    </form>
+    <a class="btn-all" href="/tickets/{{_id}}/update-form" >Edit</a>
   </div>
   <div>
     <form action="/myTickets/{{_id}}/delete" method="POST">

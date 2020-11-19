@@ -3,8 +3,8 @@ require('dotenv').config();
 const mongoose = require("mongoose");
 
 mongoose
-.connect(MONGO_URI, {
-//  .connect(process.env.MONGO_CONNECTION_STRING || MONGO_URI, {
+// .connect(MONGO_URI, {
+ .connect(process.env.MONGO_CONNECTION_STRING || MONGO_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
