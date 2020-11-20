@@ -4,5 +4,20 @@
 <div><b>Destination:</b> {{destination}}</div>
 <div><b>Number of Tickets:</b> {{quantity}}</div>
 <div><b>Date:</b>{{date}}</div>
+
+<div class="loginpage">
+  <div>
+      <a href="/myTickets/{{_id}}/update-form"><button style=><i class="fa fa-edit"></i></button></a>
+  </div>
+  <div>
+    <form action="/myTickets/{{_id}}/delete" method="POST">
+    <div class="icon-floatright">
+    <button><i class="fa fa-trash-o"></i></button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
 <hr>
 {{/each}}
+<a href="/private"><b>Back</b></a> 

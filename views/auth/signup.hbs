@@ -2,36 +2,29 @@
  
 <form action="/signup" method="POST" id="form-container">
  <div>
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username">
+  <label for="username"><b>Username</b></label>
+  <input id="username" type="text" name="username" placeholder="Enter user name">
  </div>
  <br>
  
  <div>
-  <label for="password">Password</label>
-  <input id="password" type="password" name="passwordHash">
+  <label for="password"><b>Password</b></label>
+  <input id="password" type="password" name="passwordHash" placeholder="Enter password">
  </div>
-  <br>
-
- {{!-- <label for="roles">Roles</label>
-
-<select name="role" id="roleForUser">
-  <option name="GUEST" value="GUEST">GUEST</option>
-  <option name="EDITOR" value="EDITOR">EDITOR</option>
-  <option name="ADMIN" value="ADMIN">ADMIN</option>
-</select> --}}
- <br>
+  
 
  {{#if errorMessage}}
-  <div class="error-message">{{errorMessage}}</div>
+  <div class="error-message"><b>{{errorMessage}}</b></div>
  {{/if}}
+ <br>
  
  <div>
-  <button>Create account</button>
+  <button class="btn-all"><b>Create account</b></button>
  </div>
- 
+ <br>
+<br>
  <p class="account-message">
-  Do you already have an account?
+  <b>Do you already have an account?</b>
   <a href="/login">Login</a>
  </p>
  

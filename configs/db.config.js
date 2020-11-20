@@ -1,10 +1,12 @@
-const mongoose = require('mongoose');
-const DB_NAME = "IronAirlines"
-const MONGO_URI= `mongodb://localhost/${DB_NAME}`
-
+// this line will have to be added to future seed scripts if you want to support reading the connection string from .env
+require('dotenv').config();
+const mongoose = require("mongoose");
+DB_NAME="IronAirlines"
+MONGO_URI=`mongodb://localhost/${DB_NAME}`
 
 mongoose
-  .connect(process.env.MONGO_CONNECTION_STRING || MONGO_URI, {
+ .connect(MONGO_URI, {
+// .connect(process.env.MONGO_CONNECTION_STRING || MONGO_URI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

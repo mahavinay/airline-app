@@ -50,7 +50,6 @@ passport.use(
   )
 );
 
-
 const app = express();
 
 app.use(
@@ -70,47 +69,32 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
-
-
-
-
-// Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(flash());
 
-// Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-      
-
+    
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
-// default value for title local
 app.locals.title = 'Welcome to Iron Airlines';
-
-
 
 const index = require('./routes/index');
 app.use('/', index);
 
-const router = require('./routes/auth-routes');
-app.use('/', router);
+const authRouter = require('./routes/auth-routes');
+app.use('/', authRouter);
  
 module.exports = app;
