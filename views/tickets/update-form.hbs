@@ -1,7 +1,7 @@
 <h2>Edit My Ticket</h2>
 <form action="/myTickets/{{_id}}/update-form" method="post">
 <label for="date-input">Travel Date:</label>
-  <input type="date" name="date" id="date-input" value="{{date}}"/>
+  <input type="date" name="date" id="date-input" min="2020-11-20" max="2021-12-31" value="{{date}}"/>
   <br>
    <label for="origin-input">Select Origin:</label>
   <select name="origin" id="origin">
@@ -16,6 +16,7 @@
   <br>
   <label for="destination-input">Select Destination:</label>
   <select name="destination" id="destination">
+    
   <option value="{{destination}}">{{destination}}</option>
   <option value="The Netherlands">The Netherlands</option>
   <option value="United States">United States</option>

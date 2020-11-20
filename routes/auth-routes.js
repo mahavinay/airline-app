@@ -155,9 +155,7 @@ router.get('/myTickets/:id/update-form', (req, res) => {
 
 router.post('/myTickets/:id/update-form', (req, res) => {
   const { id } = req.params;
-  console.log("id",_id);
   const {origin, destination, quantity, date} = req.body
-  console.log("REQBODY",req.body);
   Ticket.findByIdAndUpdate(id, {origin, destination, quantity, date},{ new: true } )
     .then(() => res.redirect("/myTickets"))
     .catch((error) => console.log('Error while editing ticket: ${error}'));
