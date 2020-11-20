@@ -10,21 +10,24 @@ body {
     opacity: 1; }
 
 a {
-  color: #00B7FF; }
+  color: blue; }
 
 title {
   color: lightseagreen; }
 
 body {
   margin: 100px auto;
-  width: 500px;
+  width: 820px;
   align-items: center;
-  background-color: peachpuff; }
+  background-color: skyblue; }
   body .airline-title {
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
-    border: 2px solid black; }
+    border: lightseagreen solid 2px;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px; }
   body .sup-container {
     margin-top: 50px; }
   body .sup {
@@ -45,11 +48,36 @@ body {
     align-items: center; }
   body .private-view {
     margin-top: 20px;
-    border: 2px solid black;
+    border: lightseagreen solid 2px;
+    background-color: lightblue;
+    border-radius: 10px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
     align-content: flex-end; }
+
+.top-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .top-container .one {
+    background-color: lightblue;
+    border: lightseagreen solid 2px;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px; }
+
+input {
+  border-radius: 10px;
+  border: lightseagreen solid 2px;
+  padding: 10px; }
+
+select {
+  border-radius: 10px;
+  border: lightseagreen solid 2px; }
+
+.error-message {
+  color: red; }
 
 /*# sourceMappingURL=style.css.map */

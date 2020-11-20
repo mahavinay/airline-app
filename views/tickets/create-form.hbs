@@ -3,7 +3,8 @@
 <form action="/tickets" method="post">
   
   <label for="date-input">Travel Date:</label>
-  <input type="date" name="date" id="date-input" min="2020-11-20" max="2021-12-31" />
+  <input type="date" name="date" id="date-input" min="2020-11-21" max="2021-12-31" />
+  <br>
   <br>
    <label for="origin-input">Select Origin:</label>
   <select name="origin" id="origin">
@@ -15,6 +16,7 @@
   <option value="England">England</option>
 </select>
   <br>
+  <br>
   <label for="destination-input">Select Destination:</label>
   <select name="destination" id="destination">
   <option value="The Netherlands">The Netherlands</option>
@@ -25,6 +27,7 @@
   <option value="England">England</option>
 </select>
   <br>
+  <br>
   <label for="quantity-input">Number of Tickets</label>
   <select name="quantity" id="quantity-input">
     <option value="1">1</option>
@@ -32,6 +35,7 @@
     <option value="3">3</option>
     <option value="4">4</option>
   </select>
+  <br>
   <br>
   <form action="/private" method="post">
     <button class="btn-all" type="submit">Book Ticket</button>
