@@ -1,0 +1,25 @@
+<div id="form">
+  <h2>Login</h2>
+  <form action="/login" method="POST">
+  <div class="loginpage">
+    <div>
+    <label for="input-email"><b>UserName</b></label>
+    <input id="input-email" name="username" placeholder="Your Username" value="{{username}}"/>
+    </div>
+    
+    <div>
+    <label for="input-password"><b>Password</b></label>
+    <input type="password" name="passwordHash" id="input-password" placeholder="********" />
+    </div>
+    
+    <div>
+    <button class="btn-all" type="submit"><b>Login</b></button>
+    </div>
+    <br>
+    <br>
+    </div>
+    {{#if errorMessage}}
+      <p class="error-message"><b>{{errorMessage}}</b></p>
+    {{/if}}
+  </form>
+</div>

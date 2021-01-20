@@ -3,6 +3,108 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.btn-all{
+padding: 10px;
+border-radius: 10px;
+  &:hover {
+  background-color:#00B7FF;
+  opacity: 1;
+  }
+}
+
 a {
-  color: #00B7FF;
+  color: blue;;
+}
+
+title{
+color: lightseagreen;
+} 
+
+body{
+    margin: 100px auto;
+    width: 820px;
+    align-items: center;   
+    background-color: skyblue;;
+   .airline-title{
+     display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    border: lightseagreen solid 2px;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px;
+    }
+
+    .sup-container{
+      margin-top:50px;
+    }
+  
+    .sup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a{
+      margin-left: 50px;
+      &:hover {
+        color: #000;
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+
+    .icon-floatright{
+      float: right;
+    }
+
+  }
+
+  .loginpage{
+    display: flex;
+     justify-content: space-around;
+     align-items: center;
+  }
+
+  .private-view{
+    margin-top: 20px;
+    border: lightseagreen solid 2px;
+    background-color: lightblue;
+    border-radius: 10px;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+      align-items: center;
+      align-content: flex-end;
+    
+  }
+
+
+}
+
+.top-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  .one{
+  background-color: lightblue;
+  border: lightseagreen solid 2px;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;  
+  }
+}
+
+input {
+  border-radius: 10px;
+  border: lightseagreen solid 2px;
+  padding: 10px;
+}
+
+select{
+  border-radius: 10px;
+  border: lightseagreen solid 2px;
+}
+
+.error-message{
+  color: red
 }
